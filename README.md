@@ -29,11 +29,11 @@ pip install customtkinter matplotlib
 
 ## Usage
 
-1. Save the script as `ebs_gui_fixed_color_updated.py`.
+1. Save the script as `ebs.py`.
 2. Run the application with:
 
 ```bash
-python ebs_gui_fixed_color_updated.py
+python ebs.py
 ```
 
 3. Use the tabbed interface to:
