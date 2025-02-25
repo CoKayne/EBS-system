@@ -11,7 +11,7 @@ plt.rcParams['font.sans-serif'] = ['Microsoft YaHei']  # 用雅黑
 plt.rcParams['axes.unicode_minus'] = False  # 解決負號顯示
 
 # 數據檔案
-DATA_FILE = "ebs_data.json"
+DATA_FILE = "C:\\Users\\Kayne\\Desktop\\ebs_data.json"
 
 # 載入或初始化數據
 def load_data():
@@ -70,6 +70,8 @@ class EBSSystem:
         self.notebook.add("預測時間")
         self.notebook.add("數據分析")
 
+        self.selected_finish_task_name = None  # 用 None 記錄選中任務名
+
         # 添加任務分頁
         self.create_add_tab()
         # 完成任務分頁
@@ -81,7 +83,6 @@ class EBSSystem:
         # 數據分析分頁
         self.create_analyze_tab()
 
-        self.selected_finish_task_name = None  # 用 None 記錄選中任務名
 
     def create_add_tab(self):
         frame = self.notebook.tab("添加任務")
@@ -324,3 +325,4 @@ if __name__ == "__main__":
     root = ctk.CTk()
     app = EBSSystem(root)
     root.mainloop()
+
