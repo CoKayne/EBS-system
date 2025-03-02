@@ -11,7 +11,7 @@ plt.rcParams['font.sans-serif'] = ['Microsoft YaHei']  # 用雅黑
 plt.rcParams['axes.unicode_minus'] = False  # 解決負號顯示
 
 # 數據檔案
-DATA_FILE = "C:\\Users\\Kayne\\Desktop\\ebs_data.json"
+DATA_FILE = "ebs_data.json"
 
 # 載入或初始化數據
 def load_data():
