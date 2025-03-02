@@ -117,18 +117,23 @@ class EBSSystem:
         unfinished_tasks = [task["name"] for task in self.data["tasks"] if task["actual_hours"] is None]
         for widget in self.finish_tasks.winfo_children():  # 清理舊單選按鈕
             widget.destroy()
-        for i, task_name in enumerate(unfinished_tasks):
-            radio = ctk.CTkRadioButton(self.finish_tasks, text=task_name, command=lambda name=task_name: self.select_finish_task(name))
+        
+        # 建立變數來追蹤選中的單選按鈕
+        self.finish_task_var = ctk.StringVar(value=self.selected_finish_task_name if self.selected_finish_task_name else "")
+        
+        for task_name in unfinished_tasks:
+            radio = ctk.CTkRadioButton(
+                self.finish_tasks, 
+                text=task_name, 
+                variable=self.finish_task_var,
+                value=task_name,
+                fg_color="#4a6cd4",      # 選中時的顏色 (中等藍色)
+                hover_color="#3a5cbd",   # 懸停時的顏色 (較深藍色)
+                border_color="#d1d1d1"   # 邊框顏色 (淺灰色)
+            )
             radio.pack(pady=2)
-            if self.selected_finish_task_name == task_name:
-                radio.configure(fg_color="blue", text_color="white")  # 選中時藍底白字
-            else:
-                radio.configure(fg_color="gray", text_color="white")  # 未選中時灰底白字
+        
         self.finish_tasks.update_idletasks()
-
-    def select_finish_task(self, name):
-        self.selected_finish_task_name = name  # 記錄選中任務名
-        self.update_finish_tasks()  # 刷新外觀，固定高亮選中任務
 
     def create_modify_tab(self):
         frame = self.notebook.tab("修改任務")
@@ -325,4 +330,3 @@ if __name__ == "__main__":
     root = ctk.CTk()
     app = EBSSystem(root)
     root.mainloop()
-
